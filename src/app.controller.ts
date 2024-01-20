@@ -1,7 +1,6 @@
-import { AppService } from './app.service';
-import { IGetHeathCheck } from './interface';
-import { Controller, Get } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { AppService } from "./app.service";
+import { Controller, Get } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
 
 @Controller()
 export class AppController {
@@ -11,7 +10,5 @@ export class AppController {
   ) {}
 
   @Get()
-  getHeathCheck(): IGetHeathCheck {
-    return this.appService.getHeathCheck();
-  }
+  getHeathCheck() {}
 }

@@ -1,12 +1,10 @@
-import { Environment, IGetHeathCheck } from './interface';
-import { Injectable } from '@nestjs/common';
-import * as process from 'process';
+import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class AppService {
-  getHeathCheck(): IGetHeathCheck {
-    return {
-      environment: (process.env.NODE_ENV as Environment) ?? Environment.LOCAL,
-    };
-  }
+  // getHeathCheck(): IGetHeathCheck {
+  //   return {
+  //     environment: (process.env.NODE_ENV as Environment) ?? Environment.LOCAL,
+  //   };
+  // }
 }
