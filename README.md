@@ -58,6 +58,15 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Database Migration
+```
+$ npx prisma init
+$ npx prisma db pull
+$ npx prisma db push
+$ npx prisma generate -- pull, push 후 실행 해줘야 적용됨
+$ mysql://USER:PASSWORD@HOST:PORT/DATABASE
+```
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
