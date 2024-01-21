@@ -7,6 +7,7 @@ import {
 } from "./infrastructure";
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
+import { PrismaModule } from "nestjs-prisma";
 import * as process from "process";
 
 @Module({
@@ -16,6 +17,9 @@ import * as process from "process";
     }),
     EnvironmentConfigModule,
     HealthCheckModule,
+    PrismaModule.forRoot({
+      isGlobal: true,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService, ConfigService],
