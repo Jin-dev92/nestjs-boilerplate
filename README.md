@@ -58,14 +58,20 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Database Migration
-```
+## Database Initialize
+https://docs.nestjs.com/recipes/prisma
+```bash
 $ npx prisma init
 $ npx prisma db pull
 $ npx prisma db push
 $ npx prisma generate -- pull, push 후 실행 해줘야 적용됨
 $ mysql://USER:PASSWORD@HOST:PORT/DATABASE
 ```
+## Database Migration
+```bash
+$ npx prisma migrate dev --name init
+```
+
 
 ## Support
 
