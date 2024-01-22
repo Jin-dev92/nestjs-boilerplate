@@ -1,6 +1,7 @@
 import { CreateUserCommand } from "../create-user.command";
-import { ICommandHandler } from "@nestjs/cqrs";
+import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
 
+@CommandHandler(CreateUserCommand)
 export class CreateUserCommandHandler
   implements ICommandHandler<CreateUserCommand>
 {
