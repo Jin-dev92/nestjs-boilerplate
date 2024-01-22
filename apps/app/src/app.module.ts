@@ -1,4 +1,3 @@
-import { PrismaModule } from "../../../prisma";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import {
@@ -8,6 +7,7 @@ import {
 } from "./infrastructure";
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
+import { PrismaModule } from "@prisma";
 import * as process from "process";
 
 @Module({
