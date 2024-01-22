@@ -1,5 +1,6 @@
+import { GetUsersDto } from "../../../interface/user/get-users.dto";
 import { IQuery } from "@nestjs/cqrs";
 
 export class GetUsersQuery implements IQuery {
-  constructor() {}
+  constructor(readonly query: GetUsersDto) {}
 }

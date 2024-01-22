@@ -1,13 +1,13 @@
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { UserModule } from "./application/user";
 import {
   EnvironmentConfigModule,
   HealthCheckModule,
   LoggerMiddleware,
 } from "./infrastructure";
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
-import { ConfigModule, ConfigService } from "@nestjs/config";
-import { PrismaModule } from "@prisma";
+import { ConfigModule } from "@nestjs/config";
 import * as process from "process";
 
 @Module({
@@ -17,10 +17,10 @@ import * as process from "process";
     }),
     EnvironmentConfigModule,
     HealthCheckModule,
-    PrismaModule,
+    UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ConfigService],
+  providers: [AppService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer): any {
