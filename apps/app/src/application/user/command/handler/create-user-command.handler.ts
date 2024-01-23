@@ -1,6 +1,6 @@
 import { CreateUserCommand } from "../create-user.command";
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
-import { PrismaService } from "@prisma";
+import { PrismaModel, PrismaService } from "@prisma";
 
 @CommandHandler(CreateUserCommand)
 export class CreateUserCommandHandler
@@ -8,6 +8,7 @@ export class CreateUserCommandHandler
 {
   constructor(private readonly prismaService: PrismaService) {}
   execute({ body }: CreateUserCommand): Promise<any> {
+    const input = {} as PrismaModel.UserUncheckedCreateInput;
     this.prismaService.user.create({ data: body });
     return;
   }
