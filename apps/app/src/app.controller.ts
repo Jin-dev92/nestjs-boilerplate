@@ -1,6 +1,5 @@
 import { AppService } from "./app.service";
-import { AuthGuard } from "./infrastructure";
-import { Controller, Get, UseGuards } from "@nestjs/common";
+import { Controller, Get } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 
 @Controller()
@@ -9,7 +8,6 @@ export class AppController {
     private readonly appService: AppService,
     private readonly configService: ConfigService,
   ) {}
-  @UseGuards(AuthGuard)
   @Get()
   getHeathCheck() {
     return {
