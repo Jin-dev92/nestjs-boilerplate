@@ -1,7 +1,11 @@
-import { GetUsersDto } from "../../interface";
-import { UserParamDto } from "../../interface/user/user-param.dto";
+import {
+  CreateUserDto,
+  GetUsersDto,
+  UserParamDto,
+} from "../../types/interface";
+import { CreateUserCommand } from "./command";
 import { GetUserQuery, GetUsersQuery } from "./query";
-import { Controller, Get, Param, Query } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Query } from "@nestjs/common";
 import { CommandBus, QueryBus } from "@nestjs/cqrs";
 
 @Controller("users")
@@ -18,5 +22,9 @@ export class UserController {
   async getUser(@Param() param: UserParamDto) {
     const { userUid } = param;
     return await this.queryBus.execute(new GetUserQuery(userUid));
+  }
+  @Post("/")
+  async createUser(@Body() body: CreateUserDto) {
+    return await this.commandBus.execute(new CreateUserCommand(body));
   }
 }
