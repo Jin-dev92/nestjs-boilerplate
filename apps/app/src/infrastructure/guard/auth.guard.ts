@@ -4,13 +4,11 @@ import {
   Injectable,
   UnauthorizedException,
 } from "@nestjs/common";
-import { PrismaService } from "@prisma";
 import { Request } from "express";
 import { Observable } from "rxjs";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private readonly prisma: PrismaService) {}
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
@@ -23,6 +21,7 @@ export class AuthGuard implements CanActivate {
     if (!authorization) {
       throw new UnauthorizedException();
     }
-    return true;
+    const [bearer, token] = authorization.split(" ");
+    return Boolean(bearer === "Bearer" && token);
   }
 }
