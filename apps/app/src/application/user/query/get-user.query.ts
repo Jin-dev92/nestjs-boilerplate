@@ -1,5 +1,5 @@
 import { IQuery } from "@nestjs/cqrs";
 
 export class GetUserQuery implements IQuery {
-  constructor(readonly userUid: string) {}
+  constructor(readonly id: number) {}
 }

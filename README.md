@@ -69,14 +69,16 @@ $ mysql://USER:PASSWORD@HOST:PORT/DATABASE
 ```
 ## Database Migration
 ```bash
-$ npx prisma migrate dev --name init
+* 마이그레이션 생성
+$ npx prisma migrate dev --name 마이그레이션_파일명
+$ npx prisma migrate deploy 마이그레이션 적용
 ```
 ## Prisma Database 
 자주 쓰는 명령어
 ```bash
 $ npx prisma studio: DB를 쉽게 관리할 수 있도록 웹 브라우저로 UI 제공 ( CRUD 가능 )
 $ npx prisma migrate dev: magration 수행
-$ npx prisma migrate reset: 기존 DB의 데이터 모두 삭제하고 모든 마이그레이션 실행 후 seed 실행
+$ npx prisma migrate reset: 기존 DB의 데이터 모두 삭제하고 모든 마이그레이션 실행 후 마이그레이션 파일들 실행
 $ npx prisma db pull: 데이터 베이스의 테이블을 prisma에 적용
 $ npx prisma db push: magration 없이 DB에 적용
 ```

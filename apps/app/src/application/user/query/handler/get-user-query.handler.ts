@@ -6,10 +6,10 @@ import { PrismaService } from "@prisma";
 export class GetUserQueryHandler implements IQueryHandler<GetUserQuery> {
   constructor(private readonly prisma: PrismaService) {}
 
-  async execute({ userUid }: GetUserQuery) {
+  async execute({ id }: GetUserQuery) {
     return this.prisma.user.findUniqueOrThrow({
       where: {
-        uid: userUid,
+        id: id,
       },
     });
   }

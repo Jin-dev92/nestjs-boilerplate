@@ -6,7 +6,9 @@ import * as dotenv from "dotenv";
 import * as path from "path";
 
 dotenv.config({
-  path: path.resolve(`.${process.env.NODE_ENV}.env`),
+  path: path.resolve(
+    !process.env.NODE_ENV ? `.env` : `.${process.env.NODE_ENV}.env`,
+  ),
 });
 
 async function bootstrap() {
@@ -24,9 +26,5 @@ function initialGlobalPipes(): PipeTransform<any>[] {
   );
   return pipes;
 }
-try {
-  bootstrap();
-} catch (e) {
-  console.log(e);
-  throw e;
-}
+
+bootstrap();

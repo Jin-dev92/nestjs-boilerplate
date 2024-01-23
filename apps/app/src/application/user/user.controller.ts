@@ -18,10 +18,10 @@ export class UserController {
   async getUsers(@Query() query: GetUsersDto) {
     return await this.queryBus.execute(new GetUsersQuery(query));
   }
-  @Get("/:userUid")
+  @Get("/:userId")
   async getUser(@Param() param: UserParamDto) {
-    const { userUid } = param;
-    return await this.queryBus.execute(new GetUserQuery(userUid));
+    const { userid } = param;
+    return await this.queryBus.execute(new GetUserQuery(userid));
   }
   @Post("/")
   async createUser(@Body() body: CreateUserDto) {
