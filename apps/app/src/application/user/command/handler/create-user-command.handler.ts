@@ -8,7 +8,7 @@ export class CreateUserCommandHandler
 {
   constructor(private readonly prismaService: PrismaService) {}
   execute({ body }: CreateUserCommand): Promise<any> {
-    const input = {} as PrismaModel.UserUncheckedCreateInput;
+    const input = {} as PrismaModel.UserCreateInput;
     this.prismaService.user.create({ data: body });
     return;
   }

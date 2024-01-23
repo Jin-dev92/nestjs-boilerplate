@@ -1,18 +1,25 @@
-import { UserTypeEnumType } from "./enum/user-type.enum";
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsString,
+  IsStrongPassword,
+  IsUrl,
+} from "class-validator";
 
 export class CreateUserDto {
-  type: UserTypeEnumType;
+  @IsNotEmpty()
+  @IsEmail()
   email: string;
-  password: string;
+  @IsNotEmpty()
+  @IsString()
   name: string;
+  @IsNotEmpty()
+  @IsStrongPassword()
+  password: string;
+  @IsNotEmpty()
+  @IsString()
   username: string;
-  enName: string;
+  @IsNotEmpty()
+  @IsUrl()
   thumbnail: string;
-  jobUids: string;
-  agencyUid: string;
-  groupUid: string;
-  countryUid: string;
-  birthday: string;
-  debutday: string;
-  tagUids: string;
 }
