@@ -3,4 +3,4 @@ export const UserTypeEnum = {
   ADMIN: 2,
 } as const;
 
-export type UserTypeEnumType = keyof typeof UserTypeEnum;
+export type UserTypeEnumType = (typeof UserTypeEnum)[keyof typeof UserTypeEnum];
