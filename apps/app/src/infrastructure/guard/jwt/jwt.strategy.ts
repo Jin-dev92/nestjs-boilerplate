@@ -32,15 +32,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     if (!user) {
       throw new UnauthorizedException("토큰이 올바르지 않습니다.");
     }
-    return Boolean(user);
+    return user;
   }
-
-  //   const user = payload.sub === "0";
-  //
-  //   if (user) {
-  //     return user; // request.user에 해당 내용을 넣어준다 (Passport 라이브러리가 해줌)
-  //   } else {
-  //     throw new UnauthorizedException("접근 오류");
-  //   }
-  // }
 }
