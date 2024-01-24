@@ -21,14 +21,7 @@ export class AuthenticationService {
     ) {
       return false;
     }
-
-    const score = this.getPasswordScore(password);
-
-    if (score < 3) {
-      return false;
-    }
-
-    return true;
+    return Boolean(this.getPasswordScore(password) >= 3);
   }
 
   getSalt = this.cryptoService.generateSalt;

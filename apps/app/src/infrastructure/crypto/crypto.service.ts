@@ -30,10 +30,16 @@ export class CryptoService {
   }
 
   hashPassword(password: string, salt: string, repeat: number, length: number) {
-    const pass = crypto.pbkdf2Sync(password, salt, repeat, length, "sha512");
+    const passwordBuffer = crypto.pbkdf2Sync(
+      password,
+      salt,
+      repeat,
+      length,
+      "sha512",
+    );
     // hex코드로 주기때문에 암호화된 길이 * 2 가됨
     // 현재는 암호화길이 64 * 2 => 128자의 암호화된 비밀번호 생성
-    return pass.toString("hex");
+    return passwordBuffer.toString("hex");
   }
 
   verifyX5c(x5c: string[], cert: Buffer) {
