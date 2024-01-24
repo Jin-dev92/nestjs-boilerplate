@@ -8,12 +8,12 @@ import {
 } from "./infrastructure";
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
-import * as process from "process";
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: `.${process.env.NODE_ENV}.env`,
+      // envFilePath: `.${process.env.NODE_ENV}.env`,
+      envFilePath: `.env`,
     }),
     EnvironmentConfigModule,
     HealthCheckModule,

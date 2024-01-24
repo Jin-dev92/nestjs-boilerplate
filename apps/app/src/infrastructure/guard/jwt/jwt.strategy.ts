@@ -7,7 +7,7 @@ import { ExtractJwt, Strategy } from "passport-jwt";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  private readonly validityPeriod: number = 60 * 60 * 24; // 1일 지속
+  private readonly validityPeriod: number = 7 * 60 * 60 * 24; // 1일 지속
   constructor(private readonly prismaService: PrismaService) {
     super({
       // 헤더 Authentication 에서 Bearer 토큰으로부터 jwt를 추출하겠다는 의미
