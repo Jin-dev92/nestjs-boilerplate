@@ -1,11 +1,14 @@
 import { Payload } from "./jwt.payload";
-import { Injectable } from "@nestjs/common";
+import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
+import { PrismaService } from "@prisma";
+import dayjs from "dayjs";
 import { ExtractJwt, Strategy } from "passport-jwt";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+  private readonly validityPeriod: number = 60 * 60 * 24; // 1일 지속
+  constructor(private readonly prismaService: PrismaService) {
     super({
       // 헤더 Authentication 에서 Bearer 토큰으로부터 jwt를 추출하겠다는 의미
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -14,7 +17,22 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: Payload) {
-    return true;
+    const { iat, email } = payload;
+    const nowUnix = dayjs().unix();
+    const expireUnix = iat + this.validityPeriod;
+    if (nowUnix > expireUnix) {
+      // 토큰 만료
+      return false;
+    }
+    const user = this.prismaService.user.findUniqueOrThrow({
+      where: {
+        email,
+      },
+    });
+    if (!user) {
+      throw new UnauthorizedException("토큰이 올바르지 않습니다.");
+    }
+    return Boolean(user);
   }
 
   //   const user = payload.sub === "0";
