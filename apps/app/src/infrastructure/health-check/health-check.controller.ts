@@ -1,3 +1,4 @@
+import { CommonService } from "../common/common.service";
 import { Controller, Get } from "@nestjs/common";
 import {
   HealthCheck,
@@ -11,6 +12,7 @@ import { PrismaService } from "@prisma";
 export class HealthCheckController {
   constructor(
     private readonly healthCheckService: HealthCheckService,
+    private readonly commonService: CommonService,
     private readonly httpHealthIndicator: HttpHealthIndicator,
     private readonly prismaHealthIndicator: PrismaHealthIndicator,
     private readonly prismaService: PrismaService,
@@ -23,12 +25,12 @@ export class HealthCheckController {
       async () =>
         await this.httpHealthIndicator.pingCheck(
           "server",
-          process.env.SERVER_URL,
+          this.commonService.getServerEnvironment(),
         ),
       async () =>
         await this.httpHealthIndicator.pingCheck(
           "client",
-          process.env.CLIENT_URL,
+          this.commonService.getClientEnvironment(),
         ),
       async () =>
         this.prismaHealthIndicator.pingCheck("prisma", this.prismaService),
