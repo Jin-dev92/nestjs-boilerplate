@@ -1,11 +1,21 @@
 import { Injectable } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class CommonService {
+  constructor(private readonly configService: ConfigService) {}
   getServerEnvironment() {
-    return process.env.SERVER_URL;
+    try {
+      return this.configService.getOrThrow("SERVER_URL");
+    } catch (e) {
+      throw e;
+    }
   }
   getClientEnvironment() {
-    return process.env.CLIENT_URL;
+    try {
+      return this.configService.getOrThrow("CLIENT_URL");
+    } catch (e) {
+      throw e;
+    }
   }
 }

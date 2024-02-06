@@ -3,6 +3,7 @@ import { ValidationPipe } from "@nestjs/common";
 import { PipeTransform } from "@nestjs/common/interfaces";
 import { NestFactory } from "@nestjs/core";
 import * as dotenv from "dotenv";
+import helmet from "helmet";
 import * as path from "path";
 
 dotenv.config({
@@ -15,6 +16,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(...initialGlobalPipes());
   await app.listen(3000);
+  app.use([helmet()]);
 }
 
 function initialGlobalPipes(): PipeTransform<any>[] {
