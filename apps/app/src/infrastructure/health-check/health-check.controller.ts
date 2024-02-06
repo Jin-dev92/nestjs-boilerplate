@@ -23,15 +23,15 @@ export class HealthCheckController {
       async () =>
         await this.httpHealthIndicator.pingCheck(
           "server",
-          "http://localhost:3000",
+          process.env.SERVER_URL,
         ),
       async () =>
         await this.httpHealthIndicator.pingCheck(
           "client",
-          "http://localhost:8000",
+          process.env.CLIENT_URL,
         ),
       async () =>
-        this.prismaHealthIndicator.pingCheck("database", this.prismaService),
+        this.prismaHealthIndicator.pingCheck("prisma", this.prismaService),
     ]);
   }
 }

@@ -1,24 +1,12 @@
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { UserModule } from "./application/user";
-import {
-  EnvironmentConfigModule,
-  HealthCheckModule,
-  LoggerMiddleware,
-} from "./infrastructure";
+import { HealthCheckModule, LoggerMiddleware } from "./infrastructure";
+import { CommonModule } from "./infrastructure/common/common.module";
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
-import { ConfigModule } from "@nestjs/config";
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      // envFilePath: `.${process.env.NODE_ENV}.env.local`,
-      envFilePath: `.env`,
-    }),
-    EnvironmentConfigModule,
-    HealthCheckModule,
-    UserModule,
-  ],
+  imports: [HealthCheckModule, UserModule, CommonModule],
   controllers: [AppController],
   providers: [AppService],
 })
