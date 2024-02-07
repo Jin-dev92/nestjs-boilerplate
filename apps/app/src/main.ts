@@ -2,15 +2,7 @@ import { AppModule } from "./app.module";
 import { ValidationPipe } from "@nestjs/common";
 import { PipeTransform } from "@nestjs/common/interfaces";
 import { NestFactory } from "@nestjs/core";
-import * as dotenv from "dotenv";
 import helmet from "helmet";
-import * as path from "path";
-
-dotenv.config({
-  path: path.resolve(
-    !process.env.NODE_ENV ? `.env` : `.${process.env.NODE_ENV}.env`,
-  ),
-});
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

@@ -1,15 +1,26 @@
+import { AuthenticationService } from "../../../../infrastructure";
 import { CreateUserCommand } from "../create-user.command";
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
-import { PrismaModel, PrismaService } from "@prisma";
+import { PrismaSchema, PrismaService } from "@prisma";
 
 @CommandHandler(CreateUserCommand)
 export class CreateUserCommandHandler
   implements ICommandHandler<CreateUserCommand>
 {
-  constructor(private readonly prismaService: PrismaService) {}
-  execute({ body }: CreateUserCommand): Promise<any> {
-    const input = {} as PrismaModel.UserCreateInput;
-    this.prismaService.user.create({ data: input });
-    return;
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly authenticationService: AuthenticationService,
+  ) {}
+  execute({
+    body: { username, name, thumbnail, password, email },
+  }: CreateUserCommand): Promise<PrismaSchema.UserCreateInput> {
+    const input = {
+      username,
+      name,
+      thumbnail,
+      password,
+      email,
+    } as PrismaSchema.UserCreateInput;
+    return this.prismaService.user.create({ data: input });
   }
 }

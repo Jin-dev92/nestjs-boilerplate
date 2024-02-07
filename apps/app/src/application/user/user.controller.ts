@@ -1,26 +1,21 @@
 import { CreateUserDto, GetUsersDto, UserParamDto } from "../../interface";
-import { CreateUserCommand } from "./command";
-import { GetUserQuery, GetUsersQuery } from "./query";
+import { UserService } from "./user.service";
 import { Body, Controller, Get, Param, Post, Query } from "@nestjs/common";
-import { CommandBus, QueryBus } from "@nestjs/cqrs";
 
 @Controller("users")
 export class UserController {
-  constructor(
-    private readonly commandBus: CommandBus,
-    private readonly queryBus: QueryBus,
-  ) {}
+  constructor(private readonly userService: UserService) {}
   @Get("/")
   async getUsers(@Query() query: GetUsersDto) {
-    return await this.queryBus.execute(new GetUsersQuery(query));
+    await this.userService.getUsersExecute(query);
   }
   @Get("/:userId")
   async getUser(@Param() param: UserParamDto) {
     const { userid } = param;
-    return await this.queryBus.execute(new GetUserQuery(userid));
+    await this.userService.getUserExecute(userid);
   }
   @Post("/")
   async createUser(@Body() body: CreateUserDto) {
-    return await this.commandBus.execute(new CreateUserCommand(body));
+    await this.userService.createUserExecute(body);
   }
 }

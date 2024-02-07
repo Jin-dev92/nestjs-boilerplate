@@ -1,1 +1,1 @@
-export type { Prisma as PrismaModel } from "@prisma/client";
+export type { Prisma as PrismaSchema } from "@prisma/client";
