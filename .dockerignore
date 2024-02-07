@@ -1,4 +1,7 @@
 .git
 *Dockerfile*
 node_modules
-.env.*
+.env
+.env.development
+.env.production
+dist

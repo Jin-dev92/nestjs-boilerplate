@@ -16,8 +16,8 @@ import { PrismaModule } from "@prisma";
   providers: [
     GetUsersQueryHandler,
     GetUserQueryHandler,
-    UserService,
     CheckIsExistUserByEmailQueryHandler,
+    UserService,
   ],
 })
 export class UserModule {}
