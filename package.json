@@ -22,7 +22,8 @@
     "test:e2e": "jest --config apps/app/test/jest-e2e.json",
     "migrate:dev": "dotenv -e .env.development -- npx prisma migrate deploy",
     "migrate:prod": "dotenv -e .env.production --npx prisma migrate deploy",
-    "generate:schema": "npx prisma generate"
+    "generate:schema": "npx prisma generate",
+    "node_modules-rm": "rm -rf ./**/node_modules ./node_modules ./yarn.lock ./package-lock.json"
   },
   "dependencies": {
     "@nestjs/axios": "^3.0.1",
