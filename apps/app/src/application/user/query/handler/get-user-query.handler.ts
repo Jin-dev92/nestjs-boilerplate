@@ -7,10 +7,14 @@ export class GetUserQueryHandler implements IQueryHandler<GetUserQuery> {
   constructor(private readonly prisma: PrismaService) {}
 
   async execute({ id }: GetUserQuery) {
-    return this.prisma.user.findUniqueOrThrow({
-      where: {
-        id: id,
-      },
-    });
+    try {
+      return this.prisma.user.findUniqueOrThrow({
+        where: {
+          id: id,
+        },
+      });
+    } catch (e) {
+      throw e;
+    }
   }
 }

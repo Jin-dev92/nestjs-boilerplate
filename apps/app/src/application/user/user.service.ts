@@ -1,10 +1,13 @@
 import { AuthenticationService } from "../../infrastructure";
 import { CreateUserDto, GetUsersDto } from "../../interface";
 import { CreateUserCommand } from "./command";
-import { GetUserQuery, GetUsersQuery } from "./query";
-import { BadRequestException, Injectable } from "@nestjs/common";
+import {
+  CheckIsExistUserByEmailQuery,
+  GetUserQuery,
+  GetUsersQuery,
+} from "./query";
+import { Injectable } from "@nestjs/common";
 import { CommandBus, QueryBus } from "@nestjs/cqrs";
-import { PrismaService } from "@prisma";
 
 @Injectable()
 export class UserService {
@@ -12,7 +15,6 @@ export class UserService {
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
     private readonly authenticationService: AuthenticationService,
-    private readonly prismaService: PrismaService,
   ) {}
 
   async getUsersExecute(dto: GetUsersDto) {
@@ -23,7 +25,7 @@ export class UserService {
   }
   async createUserExecute(dto: CreateUserDto) {
     const { password, email } = dto;
-    await this.checkIsExistUserEmail(email);
+    await this.queryBus.execute(new CheckIsExistUserByEmailQuery(email));
     const salt = this.authenticationService.getSalt();
     const input = {
       ...dto,
@@ -32,16 +34,4 @@ export class UserService {
     return await this.commandBus.execute(new CreateUserCommand(input));
   }
   async deleteUserExecute() {}
-  private async checkIsExistUserEmail(email: string) {
-    try {
-      await this.prismaService.user.findUniqueOrThrow({
-        where: {
-          email,
-        },
-      });
-    } catch (e) {
-      // @Todo 커스텀 에러로 변경해줘야함
-      throw BadRequestException;
-    }
-  }
 }
