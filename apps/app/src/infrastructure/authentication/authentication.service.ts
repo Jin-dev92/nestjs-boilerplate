@@ -5,6 +5,7 @@ import { Injectable } from "@nestjs/common";
 export class AuthenticationService {
   private readonly repeat: number = 10000;
   private readonly length: number = 64;
+  private readonly minPasswordScore: number = 3;
   private readonly MAX_PASSWORD_LENGTH: number = 40;
   private readonly MIN_PASSWORD_LENGTH: number = 6;
 
@@ -21,7 +22,7 @@ export class AuthenticationService {
     ) {
       return false;
     }
-    return Boolean(this.getPasswordScore(password) >= 3);
+    return Boolean(this.getPasswordScore(password) >= this.minPasswordScore);
   }
 
   getSalt = this.cryptoService.generateSalt;
