@@ -5,6 +5,6 @@ import { Module } from "@nestjs/common";
 @Module({
   imports: [CryptoModule],
   providers: [AuthenticationService],
-  exports: [AuthenticationModule],
+  exports: [AuthenticationModule, AuthenticationService],
 })
 export class AuthenticationModule {}

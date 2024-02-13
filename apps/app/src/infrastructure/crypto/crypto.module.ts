@@ -3,6 +3,6 @@ import { Module } from "@nestjs/common";
 
 @Module({
   providers: [CryptoService],
-  exports: [CryptoModule],
+  exports: [CryptoModule, CryptoService],
 })
 export class CryptoModule {}

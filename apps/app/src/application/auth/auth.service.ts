@@ -2,6 +2,8 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class AuthService {
-  async login() {}
+  async login() {
+    /* 유저 id, password 검사 */
+  }
   async logout() {}
 }
