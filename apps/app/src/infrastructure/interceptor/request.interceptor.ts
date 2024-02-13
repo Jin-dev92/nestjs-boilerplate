@@ -15,7 +15,7 @@ export class RequestInterceptor implements NestInterceptor {
 }
 
 const processRequestData = (data: { [K: string]: any }) => {
-  // number 캐스팅이 가능하면 number 형변환, 아니면 trim 처리
+  // query, body 를 number 캐스팅이 가능하면 number 형변환, 아니면 trim 처리 해주는 함수
   const keys = Object.keys(data);
   for (const key of keys) {
     const current: string = data[key];
