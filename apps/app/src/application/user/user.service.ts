@@ -1,5 +1,5 @@
 import { AuthenticationService } from "../../infrastructure";
-import { CreateUserDto, GetUsersDto } from "../../interface";
+import { CreateUserDto, GetUsersDto } from "../../types/interface";
 import { CreateUserCommand } from "./command";
 import {
   CheckIsExistUserByEmailQuery,
