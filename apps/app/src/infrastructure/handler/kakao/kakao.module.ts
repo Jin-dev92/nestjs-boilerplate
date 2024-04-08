@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { KakaoService } from './kakao.service';
+import { KakaoService } from "./kakao.service";
+import { Module } from "@nestjs/common";
 
 @Module({
-  providers: [KakaoService]
+  providers: [KakaoService],
 })
 export class KakaoModule {}

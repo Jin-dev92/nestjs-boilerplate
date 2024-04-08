@@ -6,3 +6,4 @@ export * from "./health-check";
 export * from "./middleware";
 // export * from "./interceptor";
 export * from "./util";
+export * from "./handler";
