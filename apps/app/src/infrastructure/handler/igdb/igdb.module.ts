@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { IgdbService } from './igdb.service';
+import { IgdbService } from "./igdb.service";
+import { Module } from "@nestjs/common";
 
 @Module({
-  providers: [IgdbService]
+  providers: [IgdbService],
 })
 export class IgdbModule {}

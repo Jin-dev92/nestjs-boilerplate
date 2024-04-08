@@ -1,2 +1,1 @@
-export * from "./kakao.service";
-export * from "./kakao.module";
+export * from "./kakao-map";

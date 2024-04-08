@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { KakaoService } from './kakao.service';
+import { KakaoMapService } from './kakao-map.service';
 
-describe('KakaoService', () => {
-  let service: KakaoService;
+describe('KakaoMapService', () => {
+  let service: KakaoMapService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [KakaoService],
+      providers: [KakaoMapService],
     }).compile();
 
-    service = module.get<KakaoService>(KakaoService);
+    service = module.get<KakaoMapService>(KakaoMapService);
   });
 
   it('should be defined', () => {
