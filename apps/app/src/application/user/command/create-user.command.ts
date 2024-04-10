@@ -1,4 +1,4 @@
-import { CreateUserDto } from "../../../types/interface";
+import { CreateUserDto } from "../../../types/interfaces";
 import { ICommand } from "@nestjs/cqrs";
 
 export class CreateUserCommand implements ICommand {

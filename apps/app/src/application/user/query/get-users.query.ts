@@ -1,4 +1,4 @@
-import { GetUsersDto } from "../../../types/interface";
+import { GetUsersDto } from "../../../types/interfaces";
 import { IQuery } from "@nestjs/cqrs";
 
 export class GetUsersQuery implements IQuery {

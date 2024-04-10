@@ -2,7 +2,7 @@ import {
   CreateUserDto,
   GetUsersDto,
   UserParamDto,
-} from "../../types/interface";
+} from "../../types/interfaces";
 import { UserService } from "./user.service";
 import { Body, Controller, Get, Param, Post, Query } from "@nestjs/common";
 
