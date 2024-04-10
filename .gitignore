@@ -38,4 +38,4 @@ lerna-debug.log*
 /.env.*
 /.env
 
-/prisma/schema.prisma
+#/prisma/schema.prisma
