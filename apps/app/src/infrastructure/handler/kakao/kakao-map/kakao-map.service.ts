@@ -15,17 +15,13 @@ export class KakaoMapService {
   ) {
     const response = this.httpService.get(
       `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${longitude}&y=${latitude}`,
+      {
+        headers: {
+          Authorization: `KakaoAK ${this.KAKAO_REST_API_KEY}`,
+        },
+      },
     );
-    console.log(response);
-    // console.log(data);
-    // .get(
-    //   `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${longitude}&y=${latitude}`,
-    //   {
-    //     headers: {
-    //       Authorization: `KakaoAK ${this.KAKAO_REST_API_KEY}`,
-    //     },
-    //   },
-    // )
-    // return data;
+    // console.log(response);
+    return response;
   }
 }

@@ -1,7 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { KakaoMapService } from './kakao-map.service';
+import { KakaoMapService } from "./kakao-map.service";
+import { Test, TestingModule } from "@nestjs/testing";
 
-describe('KakaoMapService', () => {
+describe("KakaoMapService", () => {
   let service: KakaoMapService;
 
   beforeEach(async () => {
@@ -12,7 +12,10 @@ describe('KakaoMapService', () => {
     service = module.get<KakaoMapService>(KakaoMapService);
   });
 
-  it('should be defined', () => {
+  it("should be defined", () => {
     expect(service).toBeDefined();
+  });
+  it("getNearPlaces", async () => {
+    // await service.getNearPlaces();
   });
 });
