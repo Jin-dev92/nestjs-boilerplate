@@ -18,16 +18,18 @@ export class GetPlacesByCategoryDto {
   @IsNotEmpty()
   @IsEnum(KakaoMapCategoryCode)
   category_group_code: KakaoMapCategoryCode;
+
   @IsNotEmpty()
   @IsString()
   x: string;
+
   @IsNotEmpty()
   @IsString()
   y: string;
 
   @Min(0)
   @Max(20000)
-  radius: number;
+  radius: number; // 미터 단위
 
   @IsOptional()
   @IsString()
@@ -36,6 +38,7 @@ export class GetPlacesByCategoryDto {
   @IsOptional()
   @IsNumber()
   page?: number = 1;
+
   @IsOptional()
   @IsNumber()
   size?: number = 15;

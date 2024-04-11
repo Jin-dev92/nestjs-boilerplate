@@ -30,9 +30,9 @@ describe("KakaoMapService", () => {
   it("getNearPlaces", async () => {
     const response = await service.getNearPlaces({
       category_group_code: KakaoMapCategoryCode.RESTAURANT,
-      radius: 1000,
-      x: "37.5883432",
-      y: "127.0039158",
+      radius: 200,
+      y: "37.5883432",
+      x: "127.0039158",
     });
     const { data } = await firstValueFrom(
       response.pipe(
