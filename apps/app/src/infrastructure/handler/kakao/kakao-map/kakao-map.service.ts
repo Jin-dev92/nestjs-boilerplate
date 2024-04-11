@@ -2,12 +2,14 @@ import { KakaoMapResponse } from "../../../../types";
 import { GetPlacesByCategoryDto } from "./dto";
 import { HttpService } from "@nestjs/axios";
 import { Injectable } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class KakaoMapService {
-  private readonly KAKAO_REST_API_KEY = process.env.KAKAO_REST_API_KEY;
-
-  constructor(private readonly httpService: HttpService) {}
+  constructor(
+    private readonly httpService: HttpService,
+    private readonly configService: ConfigService,
+  ) {}
 
   async getNearPlaces(params: GetPlacesByCategoryDto) {
     const response = this.httpService.get<KakaoMapResponse>(
@@ -15,7 +17,7 @@ export class KakaoMapService {
       {
         params,
         headers: {
-          Authorization: `KakaoAK ${this.KAKAO_REST_API_KEY}`,
+          Authorization: `KakaoAK ${this.configService.get<string>("KAKAO_REST_API_KEY")}`,
         },
       },
     );
