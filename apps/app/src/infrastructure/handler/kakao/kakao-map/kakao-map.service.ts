@@ -1,4 +1,5 @@
-import { KakaoMapCategoryCode } from "../../../../types/enum";
+import { KakaoMapResponse } from "../../../../types";
+import { GetPlacesByCategoryDto } from "./dto";
 import { HttpService } from "@nestjs/axios";
 import { Injectable } from "@nestjs/common";
 
@@ -8,20 +9,16 @@ export class KakaoMapService {
 
   constructor(private readonly httpService: HttpService) {}
 
-  async getNearPlaces(
-    latitude: number,
-    longitude: number,
-    categoryCode: KakaoMapCategoryCode,
-  ) {
-    const response = this.httpService.get(
-      `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${longitude}&y=${latitude}`,
+  async getNearPlaces(params: GetPlacesByCategoryDto) {
+    const response = this.httpService.get<KakaoMapResponse>(
+      `https://dapi.kakao.com/v2/local/search/category.json`,
       {
+        params,
         headers: {
           Authorization: `KakaoAK ${this.KAKAO_REST_API_KEY}`,
         },
       },
     );
-    // console.log(response);
     return response;
   }
 }
