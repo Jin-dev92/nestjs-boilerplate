@@ -8,20 +8,29 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  email String @unique
-  name String
-  password String
-  salt String?
-  username String
+  id        Int      @id @default(autoincrement())
+  uid       String   @unique
+  email     String   @unique
+  name      String
+  password  String
+  nickname  String
   thumbnail String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
+model UserAuth {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  salt      String
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model UserVisitLog {
-  id Int @id @default(autoincrement())
-  ip String
+  id        Int      @id @default(autoincrement())
+  ip        String
   userAgent String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
