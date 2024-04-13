@@ -1,5 +1,4 @@
-import { KakaoMapService } from "../../infrastructure";
-import { GetPlacesByCategoryDto } from "../../infrastructure/handler/kakao/kakao-map/dto";
+import { GetPlacesByCategoryDto, KakaoMapService } from "../../infrastructure";
 import { Injectable } from "@nestjs/common";
 import { AxiosError } from "axios";
 import { catchError, firstValueFrom } from "rxjs";
@@ -8,16 +7,16 @@ import { catchError, firstValueFrom } from "rxjs";
 export class PlacesService {
   constructor(private readonly kakaoMapService: KakaoMapService) {}
 
-  async getPlaces(params: GetPlacesByCategoryDto) {
+  async getPlacesExecutes(params: GetPlacesByCategoryDto) {
     const response = await this.kakaoMapService.getNearPlaces(params);
     const { data } = await firstValueFrom(
       response.pipe(
         catchError((err: AxiosError) => {
-          console.log(err);
           throw err;
         }),
       ),
     );
+    // data.documents.map((place) => place.);
     return data;
   }
 }

@@ -1,5 +1,5 @@
 import { KakaoMapModule } from "../../infrastructure";
-import { PlacesController } from "./places.controller";
+import { PlacesController } from "../../presentation";
 import { PlacesService } from "./places.service";
 import { Module } from "@nestjs/common";
 

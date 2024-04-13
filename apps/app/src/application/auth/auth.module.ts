@@ -1,4 +1,4 @@
-import { AuthController } from "./auth.controller";
+import { AuthController } from "../../presentation";
 import { AuthService } from "./auth.service";
 import { Module } from "@nestjs/common";
 import { PrismaModule } from "@prisma";

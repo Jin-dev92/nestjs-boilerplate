@@ -1,10 +1,10 @@
 import { AuthenticationModule } from "../../infrastructure";
+import { UserController } from "../../presentation";
 import {
   CheckIsExistUserByEmailQueryHandler,
   GetUserQueryHandler,
   GetUsersQueryHandler,
 } from "./query";
-import { UserController } from "./user.controller";
 import { UserService } from "./user.service";
 import { Module } from "@nestjs/common";
 import { CqrsModule } from "@nestjs/cqrs";
