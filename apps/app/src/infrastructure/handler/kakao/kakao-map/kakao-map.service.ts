@@ -1,3 +1,4 @@
+import { KAKAO_CONFIG_KEY } from "../../../../constants/enum";
 import { KakaoMapResponse } from "../../../../types";
 import { GetPlacesByCategoryDto } from "./dto";
 import { HttpService } from "@nestjs/axios";
@@ -17,7 +18,7 @@ export class KakaoMapService {
       {
         params,
         headers: {
-          Authorization: `KakaoAK ${this.configService.get<string>("KAKAO_REST_API_KEY")}`,
+          Authorization: `KakaoAK ${this.configService.get<string>(KAKAO_CONFIG_KEY.KAKAO_REST_API_KEY)}`,
         },
       },
     );
