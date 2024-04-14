@@ -27,6 +27,7 @@ describe("KakaoMapService", () => {
   it("should be defined", () => {
     expect(service).toBeDefined();
   });
+  it("repository Test", () => {});
   it("getNearPlaces", async () => {
     const response = await service.getNearPlaces({
       category_group_code: KakaoMapCategoryCode.RESTAURANT,
