@@ -13,23 +13,24 @@ export class IgdbService {
     private readonly httpService: HttpService,
     private readonly configService: ConfigService,
   ) {
-    // if (!this.accessToken) {
-    //   this.getAccessToken().then((data) => {
-    //     const { access_token } = data;
-    //     this.accessToken = access_token;
-    //     // kvStore 로 토큰 정보를 캐싱해두는 방법이 더 좋음.
-    //     // 해당 포트폴리오에서는 다루지 않음.
-    //     this.httpService.axiosRef.defaults.headers.common = {
-    //       Authorization: `Bearer ${access_token}`,
-    //       "Client-ID": this.configService.get<string>("IGDB_CLIENT_ID"),
-    //       Accept: "application/json",
-    //     };
-    //   });
-    // }
+    if (!this.accessToken) {
+      // kvStore 로 토큰 정보를 캐싱해두는 방법이 더 좋음.
+      // 해당 포트폴리오에서는 다루지 않음.
+      this.httpService.axiosRef.interceptors.request.use(async (config) => {
+        const { access_token } = await this.getAccessToken();
+        this.accessToken = access_token;
+        this.httpService.axiosRef.defaults.headers.common = {
+          Authorization: `Bearer ${access_token}`,
+          "Client-ID": this.configService.get<string>("IGDB_CLIENT_ID"),
+          Accept: "application/json",
+        };
+        return config;
+      });
+    }
   }
 
   async getCharacters() {
-    await this.setHeaders();
+    // await this.setHeaders();
     const response = this.httpService.post(
       "https://api.igdb.com/v4/characters",
       {
@@ -45,14 +46,6 @@ export class IgdbService {
       ),
     );
     return data;
-  }
-  private async setHeaders() {
-    const { access_token } = await this.getAccessToken();
-    this.httpService.axiosRef.defaults.headers.common = {
-      Authorization: `Bearer ${access_token}`,
-      "Client-ID": this.configService.get<string>("IGDB_CLIENT_ID"),
-      Accept: "application/json",
-    };
   }
   private async getAccessToken() {
     const response = this.httpService.post<IgdbOauth2Response>(
