@@ -7,7 +7,6 @@ import {
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { AxiosError } from "axios";
-import * as console from "node:console";
 import { catchError, firstValueFrom } from "rxjs";
 
 @Injectable()
@@ -41,7 +40,7 @@ export class IgdbHttpConfigFactory implements HttpModuleOptionsFactory {
 
   private async getAccessToken() {
     if (await this.isExistCachedAccessToken()) {
-      return;
+      return; // redis 에서 access token 을 가져옵니다.
     }
     const response = this.httpService.post<IgdbOauth2Response>(
       "https://id.twitch.tv/oauth2/token",
