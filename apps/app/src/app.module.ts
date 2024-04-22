@@ -4,27 +4,27 @@ import { UserModule } from "./application/user";
 import { HealthCheckModule, LoggerMiddleware } from "./infrastructure";
 import { CommonModule } from "./infrastructure/common/common.module";
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
-import { WinstonModule, utilities as WinstonUtils } from "nest-winston";
-import winston from "winston";
+import { WinstonModule, utilities } from "nest-winston";
+import * as winston from "winston";
 
 @Module({
   imports: [
-    HealthCheckModule,
-    UserModule,
-    CommonModule,
     WinstonModule.forRoot({
       transports: [
         new winston.transports.Console({
           level: "info",
           format: winston.format.combine(
             winston.format.timestamp(),
-            WinstonUtils.format.nestLike("devJin-portfolio", {
+            utilities.format.nestLike("devJin-portfolio", {
               prettyPrint: true,
             }),
           ),
         }),
       ],
     }),
+    HealthCheckModule,
+    UserModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
