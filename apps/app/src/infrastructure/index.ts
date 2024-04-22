@@ -7,4 +7,3 @@ export * from "./middleware";
 // export * from "./interceptor";
 export * from "./utils";
 export * from "./handler";
-export * from "./logger";
