@@ -28,7 +28,6 @@ export class IgdbService {
     const { data } = await firstValueFrom(
       response.pipe(
         catchError((err: AxiosError) => {
-          console.log(err);
           throw err;
         }),
       ),
@@ -40,7 +39,6 @@ export class IgdbService {
     const { data } = await firstValueFrom(
       response.pipe(
         catchError((err: AxiosError) => {
-          console.log(err);
           throw err;
         }),
       ),

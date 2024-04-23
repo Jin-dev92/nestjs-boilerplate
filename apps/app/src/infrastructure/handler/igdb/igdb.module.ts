@@ -3,6 +3,7 @@ import { IgdbAuthModule } from "./igdb-auth";
 import { IgdbService } from "./igdb.service";
 import { HttpModule } from "@nestjs/axios";
 import { Module } from "@nestjs/common";
+import { WinstonLogger } from "nest-winston";
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { Module } from "@nestjs/common";
       imports: [IgdbAuthModule],
     }),
     IgdbAuthModule,
+    WinstonLogger,
   ],
   providers: [IgdbService],
 })
