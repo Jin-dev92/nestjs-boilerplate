@@ -1,12 +1,18 @@
 import { GetCharacterFields, GetGamesField } from "./fields";
 import { HttpService } from "@nestjs/axios";
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { AxiosError } from "axios";
+import { WINSTON_MODULE_NEST_PROVIDER } from "nest-winston";
 import { catchError, firstValueFrom } from "rxjs";
+import { Logger } from "winston";
 
 @Injectable()
 export class IgdbService {
-  constructor(private readonly httpService: HttpService) {
+  constructor(
+    private readonly httpService: HttpService,
+    @Inject(WINSTON_MODULE_NEST_PROVIDER)
+    private readonly logger: Logger,
+  ) {
     this.httpService.axiosRef.interceptors.request.use(
       (config) => {
         config.data = config.data
@@ -15,6 +21,7 @@ export class IgdbService {
         return config;
       },
       (error) => {
+        this.logger.error(error);
         return Promise.reject(error);
       },
     );
@@ -28,6 +35,7 @@ export class IgdbService {
     const { data } = await firstValueFrom(
       response.pipe(
         catchError((err: AxiosError) => {
+          this.logger.error(err);
           throw err;
         }),
       ),
@@ -39,6 +47,7 @@ export class IgdbService {
     const { data } = await firstValueFrom(
       response.pipe(
         catchError((err: AxiosError) => {
+          this.logger.error(err);
           throw err;
         }),
       ),
