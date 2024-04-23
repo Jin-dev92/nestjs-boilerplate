@@ -8,6 +8,5 @@ import { PrismaModule } from "@prisma";
   imports: [HttpModule, TerminusModule, PrismaModule],
   providers: [HealthCheckHandler],
   exports: [HealthCheckHandler],
-  // controllers: [HealthCheckController],
 })
 export class HealthCheckModule {}
