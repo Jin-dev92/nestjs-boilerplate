@@ -16,13 +16,14 @@ export class IgdbAuthService {
     if (await this.isExistCachedAccessToken()) {
       return; // redis 에서 access token 을 가져옵니다.
     }
+    const body = {
+      client_id: this.configService.get<string>("IGDB_CLIENT_ID"),
+      client_secret: this.configService.get<string>("IGDB_CLIENT_SECRET"),
+      grant_type: "client_credentials",
+    };
     const response = this.httpService.post<IgdbOauth2Response>(
       "https://id.twitch.tv/oauth2/token",
-      {
-        client_id: this.configService.get<string>("IGDB_CLIENT_ID"),
-        client_secret: this.configService.get<string>("IGDB_CLIENT_SECRET"),
-        grant_type: "client_credentials",
-      },
+      body,
     );
     const { data } = await firstValueFrom(
       response.pipe(
@@ -35,6 +36,9 @@ export class IgdbAuthService {
     return data;
   }
 
+  getClientId() {
+    return this.configService.get<string>("IGDB_CLIENT_ID");
+  }
   private async isExistCachedAccessToken() {
     // redis 혹은 다른 kv store 에서 accessToken 을 가져옵니다. (비용 문제로 인해 사용하지 않을 예정입니다.)
     try {

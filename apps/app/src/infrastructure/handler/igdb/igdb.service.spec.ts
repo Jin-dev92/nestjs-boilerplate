@@ -1,4 +1,3 @@
-import { IgdbHttpConfigFactory } from "./factory";
 import { IgdbAuthModule } from "./igdb-auth";
 import { IgdbService } from "./igdb.service";
 import { HttpModule } from "@nestjs/axios";
@@ -9,13 +8,7 @@ describe("IgdbService", () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [
-        HttpModule.registerAsync({
-          imports: [IgdbAuthModule],
-          useClass: IgdbHttpConfigFactory,
-        }),
-        IgdbAuthModule,
-      ],
+      imports: [HttpModule, IgdbAuthModule],
       providers: [IgdbService],
     }).compile();
 
