@@ -11,6 +11,7 @@ import { ConfigModule } from "@nestjs/config";
       load: [IgdbConfig],
     }),
   ],
+  exports: [IgdbAuthService],
   providers: [IgdbAuthService],
 })
 export class IgdbAuthModule {}

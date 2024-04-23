@@ -1,5 +1,5 @@
 import { IgdbHttpConfigFactory } from "./factory";
-import { IgdbAuthModule, IgdbAuthService } from "./igdb-auth";
+import { IgdbAuthModule } from "./igdb-auth";
 import { IgdbService } from "./igdb.service";
 import { HttpModule } from "@nestjs/axios";
 import { Module } from "@nestjs/common";
@@ -8,7 +8,7 @@ import { Module } from "@nestjs/common";
   imports: [
     HttpModule.registerAsync({
       useClass: IgdbHttpConfigFactory,
-      imports: [IgdbAuthService],
+      imports: [IgdbAuthModule],
     }),
     IgdbAuthModule,
   ],
