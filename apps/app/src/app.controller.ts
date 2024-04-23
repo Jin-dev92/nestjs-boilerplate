@@ -1,13 +1,14 @@
-import { AppService } from "./app.service";
+import { HealthCheckHandler } from "./infrastructure/health-check/health-check.service";
 import { Controller, Get } from "@nestjs/common";
+import { HealthCheck } from "@nestjs/terminus";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly healthCheckHandler: HealthCheckHandler) {}
+
+  @HealthCheck()
   @Get()
   getHeathCheck() {
-    return {
-      environment: process.env.NODE_ENV ?? "local",
-    };
+    return this.healthCheckHandler.getHeathCheck();
   }
 }

@@ -1,15 +1,11 @@
 import { CommonService } from "../common/common.service";
-import { Controller, Get } from "@nestjs/common";
-import {
-  HealthCheck,
-  HealthCheckService,
-  HttpHealthIndicator,
-  PrismaHealthIndicator,
-} from "@nestjs/terminus";
+import { Injectable } from "@nestjs/common";
+import { HttpHealthIndicator, PrismaHealthIndicator } from "@nestjs/terminus";
+import { HealthCheckService } from "@nestjs/terminus/dist/health-check/health-check.service";
 import { PrismaService } from "@prisma";
 
-@Controller("health-check")
-export class HealthCheckController {
+@Injectable()
+export class HealthCheckHandler {
   constructor(
     private readonly healthCheckService: HealthCheckService,
     private readonly commonService: CommonService,
@@ -18,19 +14,15 @@ export class HealthCheckController {
     private readonly prismaService: PrismaService,
   ) {}
 
-  @Get()
-  @HealthCheck()
-  async healthCheck() {
+  getHeathCheck() {
     return this.healthCheckService.check([
       async () =>
         await this.httpHealthIndicator.pingCheck(
-          "server",
-          this.commonService.getServerEnvironment(),
-        ),
-      async () =>
-        await this.httpHealthIndicator.pingCheck(
-          "client",
-          this.commonService.getClientEnvironment(),
+          "google",
+          "https://www.google.com",
+          {
+            timeout: 3000,
+          },
         ),
       async () =>
         this.prismaHealthIndicator.pingCheck("prisma", this.prismaService),
