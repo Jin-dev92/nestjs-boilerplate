@@ -21,7 +21,7 @@ export class IgdbService {
   }
 
   async getCharacters(fields?: (keyof GetCharacterFields)[]) {
-    const response = this.httpService.post<GetCharacterFields>(
+    const response = this.httpService.post<GetCharacterFields[]>(
       "/characters",
       fields,
     );
@@ -36,7 +36,7 @@ export class IgdbService {
     return data;
   }
   async getGames(fields?: (keyof GetGamesField)[]) {
-    const response = this.httpService.post("/games", fields);
+    const response = this.httpService.post<GetGamesField[]>("/games", fields);
     const { data } = await firstValueFrom(
       response.pipe(
         catchError((err: AxiosError) => {
