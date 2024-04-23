@@ -25,9 +25,12 @@ describe("IgdbService", () => {
   it("should be defined", () => {
     expect(service).toBeDefined();
   });
-  it("getCharacters Test", async () => {
+  it("igdb - getCharacters", async () => {
     const data = await service.getCharacters();
-    // expect(service).toBeDefined();
+    console.log(data);
+  });
+  it("igdb - getGames", async () => {
+    const data = await service.getGames();
     console.log(data);
   });
 });
