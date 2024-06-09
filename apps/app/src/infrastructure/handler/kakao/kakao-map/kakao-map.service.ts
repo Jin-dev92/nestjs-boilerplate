@@ -1,4 +1,4 @@
-import { KAKAO_CONFIG_KEY } from "../../../../constants/enum";
+import { KAKAO_CONFIG_KEY } from "../../../../constants";
 import { KakaoMapResponse } from "../../../../types";
 import { GetPlacesByCategoryDto } from "./dto";
 import { HttpService } from "@nestjs/axios";
@@ -10,7 +10,8 @@ export class KakaoMapService {
   constructor(
     private readonly httpService: HttpService,
     private readonly configService: ConfigService,
-  ) {}
+  ) {
+  }
 
   async getNearPlaces(params: GetPlacesByCategoryDto) {
     const response = this.httpService.get<KakaoMapResponse>(
