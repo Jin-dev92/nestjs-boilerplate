@@ -3,6 +3,7 @@ import { CreateUserDto, GetUsersDto } from "../../types/interfaces";
 import { CreateUserCommand } from "./commands";
 import {
   CheckIsExistUserByEmailQuery,
+  CheckUserPasswordQuery,
   GetUserQuery,
   GetUsersQuery,
 } from "./query";
@@ -22,6 +23,11 @@ export class UserService {
   }
   async getUserExecute(userid: number) {
     return await this.queryBus.execute(new GetUserQuery(userid));
+  }
+  async checkUserPasswordExecute(email: string, password: string) {
+    return await this.queryBus.execute(
+      new CheckUserPasswordQuery(email, password),
+    );
   }
   async createUserExecute(dto: CreateUserDto) {
     const { password, email } = dto;

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "moduleResolution": "node",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -19,8 +20,9 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@prisma": [
-        "./prisma",
-      ],
+        "./prisma"
+//        "node_modules/@prisma/client"
+      ]
     }
   }
 }
