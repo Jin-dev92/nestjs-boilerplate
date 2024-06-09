@@ -1,4 +1,7 @@
-import { AuthenticationModule } from "../../infrastructure";
+import {
+  AuthenticationModule,
+  AuthenticationService,
+} from "../../infrastructure";
 import { UserController } from "../../presentation";
 import {
   CheckIsExistUserByEmailQueryHandler,
@@ -20,6 +23,7 @@ import { PrismaModule } from "@prisma";
     CheckIsExistUserByEmailQueryHandler,
     CheckUserPasswordQueryHandler,
     UserService,
+    AuthenticationService,
   ],
   exports: [UserService],
 })
