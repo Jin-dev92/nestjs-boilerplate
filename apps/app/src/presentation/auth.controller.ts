@@ -5,10 +5,10 @@ import { Body, Controller, Post } from "@nestjs/common";
 @Controller("auth")
 export class AuthController {
   constructor(private authService: AuthService) {}
-  @Post()
+  @Post("/login")
   async login(@Body() dto: LoginDto) {
     await this.authService.login(dto);
   }
-  @Post()
+  @Post("/logout")
   async logOut() {}
 }

@@ -1,6 +1,6 @@
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { UserModule } from "./application/user";
+import { AuthModule, UserModule } from "./application";
 import { HealthCheckModule, LoggerMiddleware } from "./infrastructure";
 import { CommonModule } from "./infrastructure/common/common.module";
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
@@ -25,6 +25,7 @@ import * as winston from "winston";
     HealthCheckModule,
     UserModule,
     CommonModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

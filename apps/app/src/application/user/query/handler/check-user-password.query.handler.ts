@@ -18,22 +18,20 @@ export class CheckUserPasswordQueryHandler
           email,
         },
         include: {
-          userAuth: true,
+          UserAuth: true,
         },
       });
 
       if (!user) {
         return false;
       }
-      if (
-        !this.authenticationService.verifyPassword(
-          password,
-          user.userAuth.password,
-          user.userAuth.salt,
-        )
-      ) {
-        return false;
-      }
+      console.log(user);
+      // const { password: passwordHash, salt } = user.UserAuth;
+      // if (
+      //   !this.authenticationService.verifyPassword(password, passwordHash, salt)
+      // ) {
+      //   return false;
+      // }
       return user;
     } catch (e) {
       throw e;

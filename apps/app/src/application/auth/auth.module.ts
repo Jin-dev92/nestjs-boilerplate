@@ -14,7 +14,6 @@ import { PrismaModule } from "@prisma";
       secret: process.env.JWT_SECRET_KEY,
       signOptions: { expiresIn: "1d" },
     }),
-    // PassportModule,
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy, LocalStrategy],

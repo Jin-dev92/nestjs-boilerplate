@@ -1,4 +1,4 @@
-import { HealthCheckHandler } from "./infrastructure/health-check/health-check.service";
+import { HealthCheckHandler } from "./infrastructure";
 import { Controller, Get } from "@nestjs/common";
 import { HealthCheck } from "@nestjs/terminus";
 

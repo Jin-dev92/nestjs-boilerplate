@@ -5,6 +5,7 @@ import {
   GetUserQueryHandler,
   GetUsersQueryHandler,
 } from "./query";
+import { CheckUserPasswordQueryHandler } from "./query/handler/check-user-password.query.handler";
 import { UserService } from "./user.service";
 import { Module } from "@nestjs/common";
 import { CqrsModule } from "@nestjs/cqrs";
@@ -17,7 +18,9 @@ import { PrismaModule } from "@prisma";
     GetUsersQueryHandler,
     GetUserQueryHandler,
     CheckIsExistUserByEmailQueryHandler,
+    CheckUserPasswordQueryHandler,
     UserService,
   ],
+  exports: [UserService],
 })
 export class UserModule {}
