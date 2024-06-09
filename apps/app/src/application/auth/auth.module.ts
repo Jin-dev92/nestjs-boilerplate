@@ -1,4 +1,3 @@
-import { JwtStrategy, LocalStrategy } from "../../infrastructure";
 import { AuthController } from "../../presentation";
 import { UserModule } from "../user";
 import { AuthService } from "./auth.service";
@@ -16,7 +15,8 @@ import { PrismaModule } from "@prisma";
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, LocalStrategy],
+  // providers: [AuthService, JwtStrategy, LocalStrategy],
+  providers: [AuthService],
   exports: [AuthService],
 })
 export class AuthModule {}

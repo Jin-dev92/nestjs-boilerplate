@@ -1,4 +1,3 @@
-import { AuthenticationService } from "../../../../infrastructure";
 import { CheckUserPasswordQuery } from "../check-user-password.query";
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
 import { PrismaService } from "@prisma";
@@ -9,7 +8,7 @@ export class CheckUserPasswordQueryHandler
 {
   constructor(
     private readonly prismaService: PrismaService,
-    private readonly authenticationService: AuthenticationService,
+    // private readonly authenticationService: AuthenticationService,
   ) {}
   async execute({ email, password }: CheckUserPasswordQuery) {
     try {

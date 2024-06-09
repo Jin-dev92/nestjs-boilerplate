@@ -1,9 +1,13 @@
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { AuthModule, UserModule } from "./application";
-import { HealthCheckModule, LoggerMiddleware } from "./infrastructure";
-import { CommonModule } from "./infrastructure/common/common.module";
+import {
+  CommonModule,
+  HealthCheckModule,
+  LoggerMiddleware,
+} from "./infrastructure";
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
+import { PrismaModule } from "@prisma";
 import { WinstonModule, utilities } from "nest-winston";
 import * as winston from "winston";
 
@@ -22,6 +26,7 @@ import * as winston from "winston";
         }),
       ],
     }),
+    PrismaModule,
     HealthCheckModule,
     UserModule,
     AuthModule,

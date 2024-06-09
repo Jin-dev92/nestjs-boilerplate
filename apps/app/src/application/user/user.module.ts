@@ -9,11 +9,11 @@ import { PrismaModule } from "@prisma";
   imports: [CqrsModule, PrismaModule, AuthenticationModule],
   controllers: [UserController],
   providers: [
-    // GetUsersQueryHandler,
-    // GetUserQueryHandler,
-    // CheckIsExistUserByEmailQueryHandler,
-    // CheckUserPasswordQueryHandler,
     UserService,
+    // GetUsersQuery,
+    // CheckIsExistUserByEmailQuery,
+    // CheckUserPasswordQuery,
+    // GetUserQuery,
   ],
   exports: [UserService],
 })
