@@ -1,6 +1,6 @@
 import { JwtStrategy, LocalStrategy } from "../../infrastructure";
 import { AuthController } from "../../presentation";
-import { UserModule, UserService } from "../user";
+import { UserModule } from "../user";
 import { AuthService } from "./auth.service";
 import { Module } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt";
@@ -16,7 +16,7 @@ import { PrismaModule } from "@prisma";
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, LocalStrategy, UserService],
+  providers: [AuthService, JwtStrategy, LocalStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}

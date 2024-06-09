@@ -12,5 +12,6 @@ import { ConfigModule } from "@nestjs/config";
     }),
   ],
   providers: [KakaoMapService],
+  exports: [KakaoMapService],
 })
 export class KakaoMapModule {}

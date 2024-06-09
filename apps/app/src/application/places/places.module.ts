@@ -6,5 +6,6 @@ import { Module } from "@nestjs/common";
 @Module({
   providers: [PlacesService, KakaoMapModule],
   controllers: [PlacesController],
+  exports: [PlacesService],
 })
 export class PlacesModule {}

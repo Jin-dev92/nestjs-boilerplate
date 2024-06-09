@@ -21,4 +21,9 @@ export class UserController {
   async createUser(@Body() body: CreateUserDto) {
     await this.userService.createUserExecute(body);
   }
+
+  // @Delete("/withDraw/:userId")
+  // async withDrawUser() {
+  //   await this.userService
+  // }
 }

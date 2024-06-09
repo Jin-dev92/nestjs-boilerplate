@@ -15,5 +15,6 @@ import { WinstonLogger } from "nest-winston";
     WinstonLogger,
   ],
   providers: [IgdbService],
+  exports: [IgdbService],
 })
 export class IgdbModule {}
