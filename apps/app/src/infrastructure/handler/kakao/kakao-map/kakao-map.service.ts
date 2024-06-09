@@ -10,11 +10,10 @@ export class KakaoMapService {
   constructor(
     private readonly httpService: HttpService,
     private readonly configService: ConfigService,
-  ) {
-  }
+  ) {}
 
   async getNearPlaces(params: GetPlacesByCategoryDto) {
-    const response = this.httpService.get<KakaoMapResponse>(
+    return this.httpService.get<KakaoMapResponse>(
       `https://dapi.kakao.com/v2/local/search/category.json`,
       {
         params,
@@ -23,6 +22,5 @@ export class KakaoMapService {
         },
       },
     );
-    return response;
   }
 }

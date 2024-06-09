@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { HttpHealthIndicator, PrismaHealthIndicator } from "@nestjs/terminus";
 import { HealthCheckService } from "@nestjs/terminus/dist/health-check/health-check.service";
-import { PrismaService } from "@prisma";
 
 @Injectable()
 export class HealthCheckHandler {
@@ -9,7 +8,7 @@ export class HealthCheckHandler {
     private readonly healthCheckService: HealthCheckService,
     private readonly httpHealthIndicator: HttpHealthIndicator,
     private readonly prismaHealthIndicator: PrismaHealthIndicator,
-    private readonly prismaService: PrismaService,
+    // private readonly prismaService: PrismaService,
   ) {}
 
   getHeathCheck() {
@@ -22,8 +21,8 @@ export class HealthCheckHandler {
             timeout: 3000,
           },
         ),
-      async () =>
-        this.prismaHealthIndicator.pingCheck("prisma", this.prismaService),
+      // async () =>
+      //   this.prismaHealthIndicator.pingCheck("prisma", this.prismaService),
     ]);
   }
 }

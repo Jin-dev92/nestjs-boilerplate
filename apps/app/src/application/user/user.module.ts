@@ -1,5 +1,11 @@
 import { AuthenticationModule } from "../../infrastructure";
 import { UserController } from "../../presentation";
+import {
+  CheckIsExistUserByEmailQueryHandler,
+  CheckUserPasswordQueryHandler,
+  GetUserQueryHandler,
+  GetUsersQueryHandler,
+} from "./query";
 import { UserService } from "./user.service";
 import { Module } from "@nestjs/common";
 import { CqrsModule } from "@nestjs/cqrs";
@@ -10,10 +16,10 @@ import { PrismaModule } from "@prisma";
   controllers: [UserController],
   providers: [
     UserService,
-    // GetUsersQuery,
-    // CheckIsExistUserByEmailQuery,
-    // CheckUserPasswordQuery,
-    // GetUserQuery,
+    GetUsersQueryHandler,
+    CheckIsExistUserByEmailQueryHandler,
+    CheckUserPasswordQueryHandler,
+    GetUserQueryHandler,
   ],
   exports: [UserService],
 })
