@@ -1,3 +1,4 @@
+import { PrismaModule } from "../../../../../prisma";
 import { AuthenticationModule } from "../../infrastructure";
 import { UserController } from "../../presentation";
 import {
@@ -9,7 +10,6 @@ import {
 import { UserService } from "./user.service";
 import { Module } from "@nestjs/common";
 import { CqrsModule } from "@nestjs/cqrs";
-import { PrismaModule } from "@prisma";
 
 @Module({
   imports: [CqrsModule, PrismaModule, AuthenticationModule],

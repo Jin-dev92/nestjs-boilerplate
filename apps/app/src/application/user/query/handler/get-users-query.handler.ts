@@ -1,6 +1,6 @@
+import { PrismaService } from "../../../../../../../prisma";
 import { GetUsersQuery } from "../get-users.query";
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
-import { PrismaService } from "@prisma";
 
 @QueryHandler(GetUsersQuery)
 export class GetUsersQueryHandler implements IQueryHandler<GetUsersQuery> {

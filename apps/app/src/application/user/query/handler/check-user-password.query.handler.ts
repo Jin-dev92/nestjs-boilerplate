@@ -1,6 +1,6 @@
+import { PrismaService } from "../../../../../../../prisma";
 import { CheckUserPasswordQuery } from "../check-user-password.query";
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
-import { PrismaService } from "@prisma";
 
 @QueryHandler(CheckUserPasswordQuery)
 export class CheckUserPasswordQueryHandler

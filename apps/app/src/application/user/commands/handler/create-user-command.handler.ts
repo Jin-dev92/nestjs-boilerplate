@@ -1,7 +1,7 @@
+import { PrismaSchema, PrismaService } from "../../../../../../../prisma";
 import { AuthenticationService } from "../../../../infrastructure";
 import { CreateUserCommand } from "../create-user.command";
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
-import { PrismaSchema, PrismaService } from "@prisma";
 
 @CommandHandler(CreateUserCommand)
 export class CreateUserCommandHandler

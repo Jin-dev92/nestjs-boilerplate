@@ -1,6 +1,6 @@
+import { PrismaService } from "../../../../../../../prisma";
 import { CheckIsExistUserByEmailQuery } from "../check-is-exist-user-by-email.query";
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
-import { PrismaService } from "@prisma";
 
 @QueryHandler(CheckIsExistUserByEmailQuery)
 export class CheckIsExistUserByEmailQueryHandler
