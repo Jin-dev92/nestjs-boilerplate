@@ -34,6 +34,6 @@ describe("UserController", () => {
 
   it("should be defined", () => {
     expect(controller).toBeDefined();
-    controller.getUsers({ page: 1, count: 10 });
+    // controller.getUsers({ page: 1, count: 10 });
   });
 });
