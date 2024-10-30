@@ -1,0 +1,13 @@
+{
+  "name": "@libs/database",
+  "version": "1.0.0",
+  "scripts": {},
+  "dependencies": {
+    "@nestjs/typeorm": "^10.0.2",
+    "pg": "^8.12.0",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
