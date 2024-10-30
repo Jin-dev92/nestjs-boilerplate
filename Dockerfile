@@ -3,7 +3,7 @@ FROM node:20
 WORKDIR /usr/src/app
 
 COPY package.json yarn.lock ./
-#COPY libs/database/package.json ./libs/database
+COPY ./libs/database/package.json ./libs/database
 
 RUN yarn install
 
