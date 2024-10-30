@@ -3,6 +3,7 @@
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
@@ -22,45 +23,33 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## 인프라 구성
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+AWS ECS + Fargate 을 기본 골자로 구성.
+현재 비용적 문제로 인해 ECS + Fargate 을 사용하지 않고, Docker-compose 를 사용하여 로컬 환경만 구성.
 
-## Installation
-
-```bash
-$ npm install
+* Server Port: 4000
+* Nginx Port: 80
+* Postgres Port: 5432
+* Reserve proxy 설명 > nginx/nginx.conf conf 파일 참조.
+```
+- /apis  -> nestjs
+- / -> nginx > client
 ```
 
-## Running the app
-
+## How to run docker container?
+Docker 콘테이너 실행
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+   * docker compose 실행
+   docker-compose up -d
+   * docker 컨테이너 종료
+   docker-compose down 
 ```
 
 ## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If
+you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## Stay in touch
 
