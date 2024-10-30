@@ -3,6 +3,6 @@ import { ChatModule } from './chat.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(ChatModule);
-  await app.listen(process.env.port ?? 3000);
+  await app.listen(process.env.port ?? 4001);
 }
 bootstrap();

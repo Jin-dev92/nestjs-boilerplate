@@ -1,0 +1,12 @@
+.idea
+.gitignore
+.git
+.dockerignore
+Dockerfile
+*.md
+*.sh
+#scripts
+
+node_modules
+**/node_modules
+**/**/node_modules
