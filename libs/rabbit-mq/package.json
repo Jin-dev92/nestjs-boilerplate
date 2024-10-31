@@ -1,0 +1,12 @@
+{
+  "name": "@libs/rabbit-mq",
+  "version": "1.0.0",
+  "scripts": {},
+  "dependencies": {
+    "amqp-connection-manager": "^4.1.14",
+    "amqplib": "^0.10.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}

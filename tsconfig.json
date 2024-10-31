@@ -23,6 +23,12 @@
       ],
       "@libs/database/*": [
         "libs/database/src/*"
+      ],
+      "@libs/rabbit-mq": [
+        "libs/rabbit-mq/src"
+      ],
+      "@libs/rabbit-mq/*": [
+        "libs/rabbit-mq/src/*"
       ]
     }
   }
