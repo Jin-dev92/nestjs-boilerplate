@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ChatModule } from './chat.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-import { QUEUE_IDENTIFIER } from './constants';
+import { QUEUE_IDENTIFIER } from '@libs/rabbit-mq';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(

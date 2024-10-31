@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ChatController } from './chat.controller';
 import { ChatService } from './chat.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { ClientModuleIdentifier, QUEUE_IDENTIFIER } from './constants';
+import { ClientModuleIdentifier, QUEUE_IDENTIFIER } from '@libs/rabbit-mq';
 
 @Module({
   imports: [
