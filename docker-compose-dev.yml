@@ -40,7 +40,7 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - /usr/src/app/node_modules # local 의 node_modules 을 참조
+      - ./node_modules:/usr/src/app/node_modules # local 의 node_modules 을 참조
       - ./:/usr/src/app # local 의 코드를 참조
     container_name: nestjs-server
     environment:

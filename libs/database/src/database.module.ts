@@ -3,32 +3,17 @@ import { DatabaseService } from './database.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 import { databaseOptionFactory } from './factory';
-import {
-  GenreRepository,
-  UserAuthRepository,
-  UserRepository,
-} from '@libs/database/repository';
+import { UserAuthRepository, UserRepository } from '@libs/database/repository';
 
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
-      // imports: [ConfigModule.forRoot({ envFilePath: 'libs/database/.env' })],
       inject: [ConfigService],
       useFactory: databaseOptionFactory,
     }),
   ],
-  providers: [
-    DatabaseService,
-    GenreRepository,
-    UserRepository,
-    UserAuthRepository,
-  ],
-  exports: [
-    DatabaseService,
-    GenreRepository,
-    UserRepository,
-    UserAuthRepository,
-  ],
+  providers: [DatabaseService, UserRepository, UserAuthRepository],
+  exports: [DatabaseService, UserRepository, UserAuthRepository],
 })
 export class DatabaseModule {
   // static register(modelName?: string): DynamicModule {

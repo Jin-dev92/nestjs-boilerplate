@@ -16,7 +16,17 @@ export const databaseOptionFactory = (
     database: configService.get('POSTGRES_DB'),
     retryDelay: Math.floor(Math.random() * 3 * 1000) + 3,
     retryAttempts: 3,
-    entities: [join(__dirname, '..', 'entities', '**', '*.entity.{ts,js}')],
+    entities: [
+      join(
+        __dirname,
+        'libs',
+        'database',
+        'src',
+        'entities',
+        '**',
+        '*.entity.{ts,js}',
+      ),
+    ],
     // migrations: [
     //   join(__dirname, '..', 'migrations', '**', '*.migrations.{ts,js}'),
     // ],

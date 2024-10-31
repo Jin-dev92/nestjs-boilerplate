@@ -41,7 +41,6 @@ services:
       - "4000:4000"
     volumes:
       - ./node_modules:/usr/src/app/node_modules # local 의 node_modules 을 참조
-#      - ./apps/nestjs-boilerplate:/usr/src/app/apps/nestjs-boilerplate # local 의 코드를 참조
       - ./:/usr/src/app # local 의 코드를 참조
     container_name: nestjs-server
     environment:

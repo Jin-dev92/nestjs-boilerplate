@@ -34,16 +34,17 @@ AWS ECS + Fargate 을 기본 골자로 구성.
 * Reserve proxy 설명 > nginx/nginx.conf conf 파일 참조.
 ```
 - /apis  -> nestjs
-- / -> nginx > client
+- / -> nginx > client > 추후 추가 예정
 ```
 
 ## How to run docker container?
 Docker 콘테이너 실행
 ```bash
-   * docker compose 실행
-   docker-compose up -d
-   * docker 컨테이너 종료
-   docker-compose down 
+  * docker-compose 컨테이너 실행
+  npm run docker-start-dev
+  
+  * docker-compose 종료 및 컨테이너 정리
+  npm run docker-stop-dev
 ```
 
 ## Support

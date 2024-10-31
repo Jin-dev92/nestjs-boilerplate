@@ -3,13 +3,11 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
-  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { UserAuth } from './user-auth.entity';
-import { UserPointHistory } from './user-point-history.entity';
 
 @Entity()
 export class User {
@@ -52,14 +50,4 @@ export class User {
   })
   @JoinColumn()
   userAuth: UserAuth;
-
-  @OneToMany(
-    () => UserPointHistory,
-    (userPointHistory) => userPointHistory.user,
-    {
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE',
-    },
-  )
-  histories: UserPointHistory[];
 }
