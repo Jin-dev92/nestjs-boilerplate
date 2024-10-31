@@ -26,15 +26,6 @@
         "tsConfigPath": "apps/nestjs-boilerplate/tsconfig.app.json"
       }
     },
-    "chat": {
-      "type": "application",
-      "root": "apps/chat",
-      "entryFile": "main",
-      "sourceRoot": "apps/chat/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/chat/tsconfig.app.json"
-      }
-    },
     "rabbit-mq": {
       "type": "library",
       "root": "libs/rabbit-mq",
