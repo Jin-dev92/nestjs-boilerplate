@@ -13,6 +13,7 @@ import { ClientModuleIdentifier, QUEUE_IDENTIFIER } from '@libs/rabbit-mq';
         options: {
           urls: ['amqp://localhost:5672'],
           queue: QUEUE_IDENTIFIER.CHAT_QUEUE.toString(),
+          noAck: false,
           queueOptions: {
             durable: false,
           },
