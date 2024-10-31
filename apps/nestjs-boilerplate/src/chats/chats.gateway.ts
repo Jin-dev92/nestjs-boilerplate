@@ -12,9 +12,10 @@ import dayjs from 'dayjs';
   cors: process.env.REACT_CLIENT_URL,
 })
 export class ChatsGateway {
-  constructor(private readonly chatsService: ChatsService) {}
-  @WebSocketServer()
+  @WebSocketServer() // 웹소켓 서버 의존성 주입
   server: Server;
+
+  constructor(private readonly chatsService: ChatsService) {}
 
   handleConnection(client: Socket) {
     console.log(`Client connected: ${client.id}`);
