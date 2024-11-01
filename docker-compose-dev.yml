@@ -16,17 +16,17 @@ services:
 #      - ./nginx/logs:/var/log/nginx
 
   postgres:
-    image: postgres:16
+    image: postgres:15
     ports:
       - "5432:5432"
     shm_size: 128mb
     build:
       context: ./database
       dockerfile: Dockerfile
-    restart: unless-stopped
+    restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./database/migrations/initdb:/docker-entrypoint-initdb.d
+#      - ./database/migrations/initdb:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
