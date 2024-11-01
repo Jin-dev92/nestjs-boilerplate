@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Column,
   Entity,
   JoinColumn,
@@ -9,7 +10,7 @@ import { UserAuthRoleEnum } from '../../types';
 import { UserKakaoOauth } from '@libs/database/entities/users/user-kakao.oauth.entity';
 
 @Entity()
-export class UserAuth {
+export class UserAuth extends BaseEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 

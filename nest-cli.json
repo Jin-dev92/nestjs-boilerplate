@@ -8,15 +8,6 @@
     "tsConfigPath": "apps/nestjs-boilerplate/tsconfig.app.json"
   },
   "projects": {
-    "database": {
-      "type": "library",
-      "root": "libs/database",
-      "entryFile": "index",
-      "sourceRoot": "libs/database/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/database/tsconfig.lib.json"
-      }
-    },
     "nestjs-boilerplate": {
       "type": "application",
       "root": "apps/nestjs-boilerplate",
