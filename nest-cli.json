@@ -34,6 +34,24 @@
       "compilerOptions": {
         "tsConfigPath": "libs/rabbit-mq/tsconfig.lib.json"
       }
+    },
+    "kakao": {
+      "type": "library",
+      "root": "libs/kakao",
+      "entryFile": "index",
+      "sourceRoot": "libs/kakao/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/kakao/tsconfig.lib.json"
+      }
+    },
+    "encryption": {
+      "type": "library",
+      "root": "libs/encryption",
+      "entryFile": "index",
+      "sourceRoot": "libs/encryption/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/encryption/tsconfig.lib.json"
+      }
     }
   },
   "monorepo": true,

@@ -77984,3 +77984,4 @@ comment on operator pg_catalog.~>~(text, text) is 'greater than';
 
 alter operator pg_catalog.~>~(text, text) owner to "kim-uijin";
 
+\c ${POSTGRES_DB} ${POSTGRES_USER}

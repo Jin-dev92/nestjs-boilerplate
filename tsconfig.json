@@ -29,6 +29,18 @@
       ],
       "@libs/rabbit-mq/*": [
         "libs/rabbit-mq/src/*"
+      ],
+      "@libs/kakao": [
+        "libs/kakao/src"
+      ],
+      "@libs/kakao/*": [
+        "libs/kakao/src/*"
+      ],
+      "@libs/encryption": [
+        "libs/encryption/src"
+      ],
+      "@libs/encryption/*": [
+        "libs/encryption/src/*"
       ]
     }
   }
