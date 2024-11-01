@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ChatsModule } from './chats/chats.module';
-import { DatabaseModule } from '@libs/database';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
@@ -12,7 +11,7 @@ import { ConfigModule } from '@nestjs/config';
     AuthModule,
     UsersModule,
     ChatsModule,
-    DatabaseModule,
+    // DatabaseModule,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['production', 'development'].includes(process.env.NODE_ENV)
