@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 import { ConfigService } from '@nestjs/config';
-import { User } from '@libs/database';
 import { JwtService } from '@nestjs/jwt';
 import { IJwtPayload } from '@libs/encryption/type';
+import { User } from '../../../apps/nestjs-boilerplate/src/users/entities';
 
 @Injectable()
 export class EncryptionService {

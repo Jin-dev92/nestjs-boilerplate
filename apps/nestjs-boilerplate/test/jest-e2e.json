@@ -11,7 +11,5 @@
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "moduleNameMapper": {
-    "@libs/database/(.*)": "<rootDir>/../libs/database/src/$1",
-    "@libs/database": "<rootDir>/../libs/database/src"
   }
 }

@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.5"
 services:
   nginx:
     image: nginx
@@ -11,8 +11,9 @@ services:
     depends_on:
       - nestjs-server
     volumes:
-      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf
-#      - ./nginx/logs:/var/log/nginx
+      #      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/config:/etc/nginx
+  #      - ./nginx/logs:/var/log/nginx
 
   postgres:
     image: postgres:16
@@ -20,16 +21,19 @@ services:
       - "5432:5432"
     shm_size: 128mb
     build:
-      context: ./libs/database
+      context: ./database
       dockerfile: Dockerfile
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./database/migrations/initdb:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
       TZ: Asia/Seoul
+    #    command:
+    #      - psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
     env_file:
       - .env
 
@@ -40,7 +44,7 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - /usr/src/app/node_modules # local 의 node_modules 을 참조
+      - ./node_modules:/usr/src/app/node_modules # local 의 node_modules 을 참조
       - ./:/usr/src/app # local 의 코드를 참조
     container_name: nestjs-server
     environment:

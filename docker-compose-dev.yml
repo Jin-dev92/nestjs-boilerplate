@@ -21,12 +21,12 @@ services:
       - "5432:5432"
     shm_size: 128mb
     build:
-      context: ./libs/database
+      context: ./database
       dockerfile: Dockerfile
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./libs/database/src/migrations/initdb:/docker-entrypoint-initdb.d
+      - ./database/migrations/initdb:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}

@@ -60,6 +60,3 @@ node_modules
 **/node_modules
 **/**/node_modules
 **/**/**/node_modules
-
-#libs/database/src/migrations
-/libs/database/node_modules/

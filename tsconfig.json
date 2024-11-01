@@ -18,12 +18,6 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@libs/database": [
-        "libs/database/src"
-      ],
-      "@libs/database/*": [
-        "libs/database/src/*"
-      ],
       "@libs/rabbit-mq": [
         "libs/rabbit-mq/src"
       ],
@@ -41,7 +35,13 @@
       ],
       "@libs/encryption/*": [
         "libs/encryption/src/*"
-      ]
+      ],
+      "@database": [
+        "database"
+      ],
+      "@database/*": [
+        "database/*"
+      ],
     }
   }
 }

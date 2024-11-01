@@ -6,8 +6,8 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { UserAuthRoleEnum } from '../../types';
-import { UserKakaoOauth } from '@libs/database/entities/users/user-kakao.oauth.entity';
+import { UserKakaoOauth } from './user-kakao.oauth.entity';
+import { UserAuthRoleEnum } from '@database';
 
 @Entity()
 export class UserAuth extends BaseEntity {
