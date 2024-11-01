@@ -1,4 +1,4 @@
-version: "3.5"
+#version: "3.8"
 services:
   nginx:
     image: nginx
@@ -6,7 +6,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "4000:80"
     restart: unless-stopped
     depends_on:
       - nestjs-server
@@ -23,10 +23,10 @@ services:
     build:
       context: ./database
       dockerfile: Dockerfile
-    restart: unless-stopped
+    restart: always
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
-#      - ./database/migrations/initdb:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+    #      - ./database/migrations/initdb:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -42,7 +42,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "4000:4000"
+      - "4000"
     volumes:
       - ./node_modules:/usr/src/app/node_modules # local 의 node_modules 을 참조
       - ./:/usr/src/app # local 의 코드를 참조
