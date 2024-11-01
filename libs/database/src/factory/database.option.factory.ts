@@ -1,6 +1,6 @@
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { join } from 'path';
+import { User, UserAuth, UserKakaoOauth } from '@libs/database/entities';
 
 export const databaseOptionFactory = (
   configService: ConfigService,
@@ -17,15 +17,18 @@ export const databaseOptionFactory = (
     retryDelay: Math.floor(Math.random() * 3 * 1000) + 3,
     retryAttempts: 3,
     entities: [
-      join(
-        __dirname,
-        'libs',
-        'database',
-        'src',
-        'entities',
-        '**',
-        '*.entity.{ts,js}',
-      ),
+      User,
+      UserAuth,
+      UserKakaoOauth,
+      // join(
+      //   __dirname,
+      //   'libs',
+      //   'database',
+      //   'src',
+      //   'entities',
+      //   '**',
+      //   '*.entity.{ts,js}',
+      // ),
     ],
     // migrations: [
     //   join(__dirname, '..', 'migrations', '**', '*.migrations.{ts,js}'),
