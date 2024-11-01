@@ -10,6 +10,7 @@ export const databaseOptionFactory = (
     host: configService.get('DB_HOST'),
     port: +configService.get('DB_PORT'),
     logging: true,
+    logger: 'file',
     username: configService.get('POSTGRES_USER'),
     password: configService.get('POSTGRES_PASSWORD'),
     database: configService.get('POSTGRES_DB'),

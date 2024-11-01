@@ -2,6 +2,7 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   JoinColumn,
   OneToOne,
@@ -36,13 +37,13 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar', length: 255, nullable: true, default: null })
   useragent: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   created_at: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz', nullable: true, default: null })
   updated_at: Date;
 
-  @Column({ type: 'timestamptz', default: null, nullable: true })
+  @DeleteDateColumn({ type: 'timestamptz', nullable: true, default: null })
   delete_at: Date;
 
   @OneToOne(() => UserAuth, {
