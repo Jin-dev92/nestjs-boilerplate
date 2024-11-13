@@ -32,6 +32,7 @@ AWS ECS + Fargate 을 기본 골자로 구성.
 * Nginx Port: 80
 * Postgres Port: 5432
 * Prometheus Port: 9090
+* Grafana Port: 3000
 * Reserve proxy 설명 > nginx/nginx.conf conf 파일 참조.
 * 컨테이너 내부 모니터링 기술 스택: Prometheus + Grafana
 * 문서화: Swagger API

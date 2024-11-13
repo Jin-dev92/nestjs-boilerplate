@@ -6,17 +6,17 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - "4000:80"
+      - 80:80
     restart: unless-stopped
     depends_on:
-      - nestjs-server
+      - api
     volumes:
-      - ./nginx/config:/etc/nginx
+      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf
 
   postgres:
     image: postgres:15
     ports:
-      - "5432:5432"
+      - 5432:5432
     shm_size: 128mb
     build:
       context: ./database
@@ -65,16 +65,16 @@ services:
     networks:
       - prometheus-net
 
-  nestjs-server:
+  api:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "4000"
+      - 4000:4000
     volumes:
       - ./node_modules:/usr/src/app/node_modules # local 의 node_modules 을 참조
       - ./:/usr/src/app # local 의 코드를 참조
-    container_name: nestjs-server
+    container_name: server-app
     environment:
       TZ: Asia/Seoul
     depends_on:

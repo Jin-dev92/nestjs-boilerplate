@@ -61,5 +61,6 @@ node_modules
 **/**/node_modules
 **/**/**/node_modules
 
-#prometheus
+# volumes
 prometheus/prometheus-volume
+grafana/grafana-volume
