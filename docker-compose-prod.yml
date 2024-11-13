@@ -11,7 +11,7 @@ services:
     depends_on:
       - api
     volumes:
-      - ./nginx/config:/etc/nginx
+      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf
 
   postgres:
     image: postgres:15
@@ -58,12 +58,12 @@ services:
       - 3000:3000
     volumes:
       - ./grafana/grafana-volume:/var/lib/grafana
+    #      - ./config/grafana-init.ini:/etc/grafana/grafana.ini
     restart: always
     depends_on:
       - prometheus
     networks:
       - prometheus-net
-
 
   alert-manager:
     image: prom/alertmanager
@@ -82,7 +82,6 @@ services:
       - prometheus
     networks:
       - prometheus-net
-
 
   api:
     build:
