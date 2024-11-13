@@ -36,8 +36,8 @@ services:
     image: prom/prometheus
     container_name: prometheus
     build:
-        context: ./prometheus
-        dockerfile: Dockerfile
+      context: ./prometheus
+      dockerfile: Dockerfile
     volumes:
       - ./prometheus/config/:/etc/prometheus/
       - ./prometheus/prometheus-volume:/prometheus
@@ -47,6 +47,21 @@ services:
       - '--web.enable-lifecycle'
       - '--config.file=/etc/prometheus/prometheus.yml'
     restart: always
+    networks:
+      - prometheus-net
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    # user: "$GRA_UID:$GRA_GID"
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/grafana-volume:/var/lib/grafana
+#      - ./config/grafana-init.ini:/etc/grafana/grafana.ini
+    restart: always
+    depends_on:
+      - prometheus
     networks:
       - prometheus-net
 
